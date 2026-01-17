@@ -9,8 +9,8 @@ var env = Environment.GetEnvironmentVariables();
 var shopifyUrl = (string)(env["SHOPIFY_URL"] ?? throw new Exception("SHOPIFY_URL not set"));
 
 var token = await ShopifyToken.RequestTokenAsync(shopifyUrl,
-    (string)(env["SHOPIFY_TOKEN"] ?? throw new Exception("SHOPIFY_TOKEN not set")),
-    (string)(env["SHOPIFY_SECRET"] ?? throw new Exception("SHOPIFY_SECRET not set")));
+    (string)(env["SHOPIFY_CLIENT_ID"] ?? throw new Exception("SHOPIFY_CLIENT_ID not set")),
+    (string)(env["SHOPIFY_CLIENT_SECRET"] ?? throw new Exception("SHOPIFY_CLIENT_SECRET not set")));
 
 var settings = new ShopifySettings {ShopifyUrl = shopifyUrl, Password = token.AccessToken};
 
